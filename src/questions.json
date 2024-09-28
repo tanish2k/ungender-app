@@ -1,0 +1,619 @@
+const quizQuestions: QuizQuestion[] = [
+  {
+    term: "Cisgender",
+    options: [
+      "A person whose gender identity matches their sex assigned at birth",
+      "A person whose gender identity differs from their sex assigned at birth",
+      "A person who is attracted to both men and women",
+      "A person who does not experience sexual attraction"
+    ],
+    correctAnswer: 0,
+    explanation: "Cisgender refers to individuals whose gender identity aligns with the sex they were assigned at birth. Understanding this term helps in recognizing diverse gender identities and promotes inclusivity."
+  },
+  {
+    term: "Neurodiversity",
+    options: [
+      "A medical condition affecting the nervous system",
+      "The range of differences in individual brain function and behavioral traits",
+      "A type of cognitive therapy",
+      "A term for people with multiple personalities"
+    ],
+    correctAnswer: 1,
+    explanation: "Neurodiversity refers to the concept that neurological differences, such as those in autism and ADHD, are normal variations in the human genome. This perspective promotes acceptance and inclusion of people with diverse neurological conditions."
+  },
+  {
+    term: "Microaggression",
+    options: [
+      "A small act of physical aggression",
+      "A brief and common daily verbal, behavioral, or environmental slight",
+      "A microscopic organism that causes aggression",
+      "A strategy in competitive sports"
+    ],
+    correctAnswer: 1,
+    explanation: "Microaggressions are subtle, often unintentional expressions of bias toward marginalized groups. Recognizing and addressing microaggressions is crucial for creating an inclusive environment."
+  },
+  {
+    term: "Allyship",
+    options: [
+      "A formal agreement between countries",
+      "The act of actively promoting and supporting inclusion of marginalized groups",
+      "A type of business partnership",
+      "A method of conflict resolution"
+    ],
+    correctAnswer: 1,
+    explanation: "Allyship involves using one's privilege to support and advocate for marginalized groups. It's an ongoing process of learning, self-reflection, and action to promote equity and inclusion."
+  },
+    {
+    term: "Cisgender",
+    options: [
+      "A person whose gender identity aligns with their assigned sex at birth",
+      "A person whose gender identity differs from their assigned sex at birth",
+      "A person who does not identify with any gender",
+      "A person who identifies with multiple genders"
+    ],
+    correctAnswer: 0,
+    explanation: "Cisgender refers to a person whose gender identity aligns with the sex they were assigned at birth. This term is used to describe people who are not transgender."
+  },
+  {
+    term: "Non-binary",
+    options: [
+      "A person who identifies as both male and female",
+      "A person who changes their gender identity frequently",
+      "A person whose gender identity falls outside the categories of man and woman",
+      "A person who does not express their gender outwardly"
+    ],
+    correctAnswer: 2,
+    explanation: "Non-binary is an umbrella term for gender identities that fall outside the traditional gender binary of male and female. Non-binary individuals may identify with a combination of genders, no gender, or a gender that is neither male nor female."
+  },
+  {
+    term: "Ally",
+    options: [
+      "A member of the LGBTQIA+ community",
+      "A person who opposes LGBTQIA+ rights",
+      "A supportive family member of an LGBTQIA+ person",
+      "A person who supports and stands up for the rights of LGBTQIA+ people"
+    ],
+    correctAnswer: 3,
+    explanation: "An Ally is a person who supports and stands up for the rights of LGBTQIA+ people, even though they may not identify as part of the community themselves. Allies play a crucial role in promoting equality and inclusivity."
+  },
+  {
+    term: "Asexual",
+    options: [
+      "A person who is attracted to all genders",
+      "A person who experiences little or no sexual attraction to others",
+      "A person who is only attracted to people of the same gender",
+      "A person who changes their sexual orientation frequently"
+    ],
+    correctAnswer: 1,
+    explanation: "Asexual refers to a person who experiences little or no sexual attraction to others. This is a sexual orientation, and asexual individuals (or 'aces') may still form romantic relationships or experience other forms of attraction."
+  },
+  {
+    term: "Intersex",
+    options: [
+      "A person who identifies as both male and female",
+      "A person born with sex characteristics that do not fit typical binary notions of male or female bodies",
+      "A person who has undergone gender reassignment surgery",
+      "A person who is attracted to people of all genders"
+    ],
+    correctAnswer: 1,
+    explanation: "Intersex refers to a person born with sex characteristics (including genitals, gonads, and chromosome patterns) that do not fit typical binary notions of male or female bodies. Intersex is a natural variation in human biology."
+  },
+  {
+    term: "Gender expression",
+    options: [
+      "The gender a person is assigned at birth",
+      "A person's internal sense of their own gender",
+      "How a person presents their gender identity externally",
+      "The process of changing one's gender"
+    ],
+    correctAnswer: 2,
+    explanation: "Gender expression refers to how a person presents their gender identity externally, through behavior, clothing, hairstyle, voice, and other characteristics. It's important to note that gender expression may or may not conform to societal expectations of gender."
+  },
+  {
+    term: "Deadname",
+    options: [
+      "A name given to a deceased person",
+      "The birth name of a transgender or non-binary person who has changed their name",
+      "A nickname used in online gaming",
+      "A legal term for changing one's name"
+    ],
+    correctAnswer: 1,
+    explanation: "Deadname refers to the birth name of a transgender or non-binary person who has changed their name as part of their gender transition. Using a person's deadname can be disrespectful and harmful."
+  },
+  {
+    term: "Heteronormativity",
+    options: [
+      "The belief that heterosexuality is the only normal sexual orientation",
+      "A medical term for hormonal imbalance",
+      "A type of gender identity",
+      "A legal term for marriage equality"
+    ],
+    correctAnswer: 0,
+    explanation: "Heteronormativity is the assumption that heterosexuality is the default or 'normal' sexual orientation. This belief can lead to the marginalization of LGBTQIA+ individuals and reinforces stereotypes about gender roles and relationships."
+  },
+  {
+    term: "QPOC",
+    options: [
+      "Queer People of Color",
+      "Questioning People of Canada",
+      "Queer Political Organizing Committee",
+      "Queer Persons of Confidence"
+    ],
+    correctAnswer: 0,
+    explanation: "QPOC is an acronym that stands for Queer People of Color. This term recognizes the intersectionality of racial and LGBTQIA+ identities, acknowledging the unique experiences and challenges faced by individuals who are both queer and people of color."
+  },
+  {
+    term: "Two-Spirit",
+    options: [
+      "A person who believes in reincarnation",
+      "A modern term used by some Indigenous North Americans to describe gender-variant individuals in their communities",
+      "A person who practices both Eastern and Western spirituality",
+      "A psychological term for multiple personality disorder"
+    ],
+    correctAnswer: 1,
+    explanation: "Two-Spirit is a modern umbrella term used by some Indigenous North Americans to describe certain spiritual people - gay, lesbian, bisexual and gender-variant individuals - in their communities. It's important to note that this term has specific cultural context and should be used respectfully."
+  },
+  {
+    term: "AFAB/AMAB",
+    options: [
+      "Always Fabulous And Beautiful/Always Marvelous And Bold",
+      "Assigned Female At Birth/Assigned Male At Birth",
+      "A Friendly Ally Backup/A Mighty Ally Boost",
+      "Alternative Feminine And Butch/Alternative Masculine And Boyish"
+    ],
+    correctAnswer: 1,
+    explanation: "AFAB and AMAB are acronyms meaning 'Assigned Female At Birth' and 'Assigned Male At Birth' respectively. These terms refer to the sex assigned to a person at birth, typically based on their external anatomy."
+  },
+  {
+    term: "Agender",
+    options: [
+      "A person who identifies as both male and female",
+      "A person who does not identify with any gender",
+      "A person who changes their gender identity frequently",
+      "A person who only experiences gender in relation to others"
+    ],
+    correctAnswer: 1,
+    explanation: "Agender refers to a person who does not identify with any gender, or identifies as being genderless. This is distinct from being non-binary or genderfluid."
+  },
+  {
+    term: "Androgynous",
+    options: [
+      "A type of sexual orientation",
+      "Having both masculine and feminine characteristics",
+      "A medical condition affecting hormones",
+      "A term for people who only date androgyns"
+    ],
+    correctAnswer: 1,
+    explanation: "Androgynous refers to having both masculine and feminine characteristics, or a gender expression that is neutral or ambiguous. This can apply to appearance, behavior, or identity."
+  },
+  {
+    term: "Aromantic",
+    options: [
+      "A person who is romantically attracted to aromas",
+      "A person who experiences little or no romantic attraction to others",
+      "A person who only experiences romantic attraction in aromatherapy settings",
+      "A person who is romantically attracted to people of all genders"
+    ],
+    correctAnswer: 1,
+    explanation: "Aromantic describes a person who experiences little or no romantic attraction to others. This is separate from sexual attraction, and aromantic individuals may still experience other forms of attraction and close relationships."
+  },
+  {
+    term: "Biphobia",
+    options: [
+      "Fear of bicycles",
+      "Prejudice against people who wear bifocals",
+      "Prejudice, fear, or hatred directed toward bisexual people",
+      "A medical condition causing double vision"
+    ],
+    correctAnswer: 2,
+    explanation: "Biphobia refers to prejudice, fear, or hatred directed toward bisexual people. It can manifest in various forms, including discrimination, disbelief in bisexuality as a valid orientation, or negative stereotypes about bisexual individuals."
+  },
+  {
+    term: "Butch",
+    options: [
+      "A term for a masculine gay man",
+      "A person who identifies as masculine in appearance, behavior, or attitude",
+      "A slang term for a female dog",
+      "A type of haircut popular in the 1950s"
+    ],
+    correctAnswer: 1,
+    explanation: "Butch refers to a person who identifies as masculine in appearance, behavior, or attitude, regardless of their gender identity. It's often used in LGBTQIA+ communities, particularly among lesbian women and non-binary individuals."
+  },
+  {
+    term: "Chosen family",
+    options: [
+      "A family selected through an adoption process",
+      "Close friends and loved ones who are not biologically related but function as a family unit",
+      "A religious term for converting to a new faith",
+      "A legal term for guardianship"
+    ],
+    correctAnswer: 1,
+    explanation: "Chosen family refers to close friends and loved ones who are not biologically related but function as a family unit. This concept is particularly important in LGBTQIA+ communities, where individuals may face rejection from their biological families."
+  },
+  {
+    term: "Demisexual",
+    options: [
+      "A person who is only sexually attracted to demigods",
+      "A person who experiences sexual attraction only after forming a strong emotional bond",
+      "A person who is sexually attracted to people of all genders",
+      "A person who experiences sexual attraction based on intellectual stimulation"
+    ],
+    correctAnswer: 1,
+    explanation: "Demisexual describes a person who only experiences sexual attraction after forming a strong emotional bond with someone. It's considered to be on the asexual spectrum."
+  },
+  {
+    term: "Drag",
+    options: [
+      "The act of pulling something across the ground",
+      "A type of car race",
+      "The act of dressing in clothing typically associated with another gender, often for performance",
+      "A term for feeling tired or unenthusiastic"
+    ],
+    correctAnswer: 2,
+    explanation: "In LGBTQIA+ contexts, drag refers to the act of dressing in clothing typically associated with another gender, often for performance. Drag can be a form of art, self-expression, and entertainment."
+  },
+  {
+    term: "Enby",
+    options: [
+      "A type of mythical creature",
+      "An acronym for 'Not Binary'",
+      "A phonetic pronunciation of 'NB,' short for non-binary",
+      "A slang term for 'enthusiastic bisexual'"
+    ],
+    correctAnswer: 2,
+    explanation: "Enby is a phonetic pronunciation of 'NB,' which is short for non-binary. It's used as a noun to refer to non-binary individuals in a way that's similar to 'boy' or 'girl'."
+  },
+  {
+    term: "Femme",
+    options: [
+      "A French word meaning 'woman'",
+      "A person who expresses and/or identifies with femininity",
+      "A type of cocktail",
+      "A brand of feminine hygiene products"
+    ],
+    correctAnswer: 1,
+    explanation: "In LGBTQIA+ contexts, femme refers to a person who expresses and/or identifies with femininity. It's often used in queer communities and can apply to people of any gender identity."
+  },
+  {
+    term: "Fluid",
+    options: [
+      "A term for someone who only dates water signs in astrology",
+      "A type of gender identity or sexual orientation that can change over time",
+      "A person who works with liquids professionally",
+      "A medical term for excessive sweating"
+    ],
+    correctAnswer: 1,
+    explanation: "In the context of gender and sexuality, fluid refers to an identity or orientation that can change over time. This could apply to gender identity (genderfluid) or sexual orientation (sexually fluid)."
+  },
+  {
+    term: "Gay",
+    options: [
+      "A term meaning happy or joyful",
+      "A person who is exclusively attracted to people of the same gender",
+      "A bright or showy color",
+      "A type of social gathering"
+    ],
+    correctAnswer: 1,
+    explanation: "While 'gay' can mean happy or joyful, in LGBTQIA+ contexts it typically refers to a person who is attracted to people of the same gender. It's most commonly used for men attracted to men, but can be used by people of any gender."
+  },
+  {
+    term: "Gender expression",
+    options: [
+      "A mathematical formula involving gender",
+      "How a person presents their gender identity externally",
+      "A person's chromosomal makeup",
+      "A legal document stating one's gender"
+    ],
+    correctAnswer: 1,
+    explanation: "Gender expression refers to how a person presents their gender identity externally, through behavior, clothing, hairstyle, voice, and other characteristics. It may or may not conform to societal expectations of gender."
+  },
+  {
+    term: "Gender identity",
+    options: [
+      "The gender assigned to a person at birth",
+      "A person's internal sense of their own gender",
+      "The gender listed on a person's official documents",
+      "A person's physical characteristics related to gender"
+    ],
+    correctAnswer: 1,
+    explanation: "Gender identity refers to a person's internal sense of their own gender. This may or may not align with the sex they were assigned at birth, and it may not correspond to societal expectations of gender."
+  },
+  {
+    term: "Genderqueer",
+    options: [
+      "A term for someone who questions their gender",
+      "A person who identifies as both male and female",
+      "A term for gender identities that are not exclusively masculine or feminine",
+      "A medical condition affecting gender development"
+    ],
+    correctAnswer: 2,
+    explanation: "Genderqueer is a term for gender identities that are not exclusively masculine or feminine. It can be used as an umbrella term for non-binary identities or as a specific identity itself."
+  },
+  {
+    term: "GSRM",
+    options: [
+      "Gender Solid-state Relay Module",
+      "Global System for Relationship Management",
+      "Gender, Sexual, and Romantic Minorities",
+      "Generalized Sexual Response Mechanism"
+    ],
+    correctAnswer: 2,
+    explanation: "GSRM is an acronym for Gender, Sexual, and Romantic Minorities. It's an inclusive term that encompasses a wide range of identities related to gender, sexual orientation, and romantic orientation."
+  },
+  {
+    term: "Heteronormativity",
+    options: [
+      "The belief that heterosexuality is the only normal and natural expression of sexuality",
+      "A medical condition affecting heterosexual individuals",
+      "A type of therapy for heterosexual couples",
+      "A legal term for heterosexual marriage"
+    ],
+    correctAnswer: 0,
+    explanation: "Heteronormativity refers to the assumption that heterosexuality is the default or 'normal' sexual orientation. This belief system can lead to the marginalization of LGBTQIA+ individuals and reinforces stereotypes about gender roles and relationships."
+  },
+  {
+    term: "Homophobia",
+    options: [
+      "Fear of going home",
+      "Prejudice against people who are similar",
+      "Prejudice, fear, or hatred directed toward LGBTQIA+ individuals",
+      "A medical condition causing fear of sameness"
+    ],
+    correctAnswer: 2,
+    explanation: "Homophobia refers to prejudice, fear, or hatred directed toward LGBTQIA+ individuals. It can manifest in various forms, from personal attitudes to systemic discrimination."
+  },
+  {
+    term: "Intersex",
+    options: [
+      "A person who identifies as both male and female",
+      "A person born with sex characteristics that do not fit typical binary notions of male or female bodies",
+      "A person who has undergone gender reassignment surgery",
+      "A term for the intersection of multiple identities"
+    ],
+    correctAnswer: 1,
+    explanation: "Intersex refers to a person born with sex characteristics (including genitals, gonads, and chromosome patterns) that do not fit typical binary notions of male or female bodies. Intersex is a natural variation in human biology."
+  },
+  {
+    term: "Lesbian",
+    options: [
+      "A woman who is attracted to other women",
+      "A person from the Greek island of Lesbos",
+      "A type of poetry popularized by Sappho",
+      "A woman who doesn't date men"
+    ],
+    correctAnswer: 0,
+    explanation: "A lesbian is a woman who is attracted to other women. This term can apply to cisgender women, transgender women, and some non-binary individuals who align with womanhood and are attracted to women."
+  },
+  {
+    term: "LGBTQIA+",
+    options: [
+      "Let's Get Back To Questioning Important Assumptions",
+      "Lesbian, Gay, Bisexual, Transgender, Queer/Questioning, Intersex, Asexual, and other identities",
+      "Large Group Building Trust Quickly In America",
+      "Life Gets Better Through Quiet Inner Awareness"
+    ],
+    correctAnswer: 1,
+    explanation: "LGBTQIA+ is an acronym that stands for Lesbian, Gay, Bisexual, Transgender, Queer/Questioning, Intersex, Asexual, and other identities. The '+' acknowledges that there are many other identities within this diverse community."
+  },
+  {
+    term: "Marginalization",
+    options: [
+      "The process of adding margins to a document",
+      "A cooking technique involving butter",
+      "The treatment of a person, group, or concept as insignificant or peripheral",
+      "A financial term for calculating profit margins"
+    ],
+    correctAnswer: 2,
+    explanation: "In social contexts, marginalization refers to the treatment of a person, group, or concept as insignificant or peripheral. This can affect LGBTQIA+ individuals and other minority groups, leading to social, economic, and political disadvantages."
+  },
+  {
+    term: "Misgender",
+    options: [
+      "To accidentally mix up different genres of music or film",
+      "To refer to a person using language that does not align with their gender identity",
+      "To change one's gender multiple times",
+      "A term for when gender reveal parties go wrong"
+    ],
+    correctAnswer: 1,
+    explanation: "To misgender someone means to refer to a person using language (especially pronouns or forms of address) that does not align with their gender identity. This can be hurtful and disrespectful, especially when done intentionally."
+  },
+  {
+    term: "MSM",
+    options: [
+      "Mainstream Media",
+      "Men Seeking Men",
+      "Methylsulfonylmethane, a dietary supplement",
+      "Men who have Sex with Men"
+    ],
+    correctAnswer: 3,
+    explanation: "In LGBTQIA+ and public health contexts, MSM is an acronym meaning 'Men who have Sex with Men.' This term focuses on behavior rather than identity, recognizing that not all men who have sex with men identify as gay or bisexual."
+  },
+  {
+    term: "Neopronouns",
+    options: [
+      "Newly discovered subatomic particles",
+      "A type of futuristic language",
+      "New pronouns used in addition to or instead of 'he,' 'she,' or 'they'",
+      "A brand of gender-neutral clothing"
+    ],
+    correctAnswer: 2,
+    explanation: "Neopronouns are new pronouns used in addition to or instead of 'he,' 'she,' or 'they.' Examples include xe/xem, ze/zir, and ey/em. These pronouns are often used by non-binary individuals who feel that traditional pronouns don't accurately represent their gender identity."
+  },
+  {
+    term: "Outing",
+    options: [
+      "The act of going outside for recreational purposes",
+      "A term for when food has expired",
+      "The act of disclosing someone else's sexual orientation or gender identity without their consent",
+      "A type of group date"
+    ],
+    correctAnswer: 2,
+    explanation: "In LGBTQIA+ contexts, outing refers to the act of disclosing someone else's sexual orientation or gender identity without their consent. This is considered a violation of privacy and can have serious personal, social, and professional consequences for the person being outed."
+  },
+  {
+    term: "Pansexual",
+    options: [
+      "Attraction to cookware",
+      "A person who is attracted to people regardless of their gender identity",
+      "Someone who only experiences sexual attraction in nature",
+      "A person who is sexually attracted to bread"
+    ],
+    correctAnswer: 1,
+    explanation: "Pansexual refers to a person who is attracted to people regardless of their gender identity. This differs from bisexuality in that it explicitly includes attraction to non-binary and transgender individuals, although many bisexual people are also attracted to all genders."
+  },
+  {
+    term: "Passing",
+    options: [
+      "Successfully completing a test or exam",
+      "When a transgender person is perceived as the gender they identify with",
+      "The act of giving something to someone else",
+      "A football technique"
+    ],
+    correctAnswer: 1,
+    explanation: "In LGBTQIA+ contexts, passing refers to when a transgender person is perceived as the gender they identify with by others. It's important to note that not all transgender people aim to 'pass,' and the concept can be controversial."
+  },
+  {
+    term: "Polyamory",
+    options: [
+      "The practice of engaging in multiple romantic relationships with the consent of all involved",
+      "A type of geometric shape",
+      "A medical condition affecting the amory gland",
+      "The study of multiple languages"
+    ],
+    correctAnswer: 0,
+    explanation: "Polyamory is the practice of engaging in multiple romantic (and typically sexual) relationships with the full knowledge and consent of all parties involved. It differs from cheating or infidelity as it is consensual and ethical."
+  },
+  {
+    term: "Queer",
+    options: [
+      "Strange or odd",
+      "A slur that has been reclaimed as an umbrella term for sexual and gender minorities",
+      "A type of abstract art",
+      "A mathematical term for unknown variables"
+    ],
+    correctAnswer: 1,
+    explanation: "Queer, once used as a slur, has been reclaimed by many as an umbrella term for sexual and gender minorities who are not heterosexual or cisgender. It's important to note that not everyone is comfortable with this term, and it should be used carefully."
+  },
+  {
+    term: "Questioning",
+    options: [
+      "The act of asking questions",
+      "A detective's profession",
+      "The process of exploring one's sexual orientation or gender identity",
+      "A type of rhetorical device in literature"
+    ],
+    correctAnswer: 2,
+    explanation: "In LGBTQIA+ contexts, questioning refers to the process of exploring one's sexual orientation or gender identity. This can be a temporary or ongoing process and is recognized as a valid identity within the LGBTQIA+ community."
+  },
+  {
+    term: "Rainbow flag",
+    options: [
+      "A meteorological phenomenon",
+      "A symbol of LGBTQIA+ pride and social movements",
+      "A type of colorful kite",
+      "The national flag of a small island nation"
+    ],
+    correctAnswer: 1,
+    explanation: "The rainbow flag is a symbol of LGBTQIA+ pride and social movements. Designed by Gilbert Baker in 1978, it has become a widely recognized emblem of the LGBTQIA+ community worldwide."
+  },
+  {
+    term: "Romantic orientation",
+    options: [
+      "A person's taste in romantic comedy films",
+      "The direction one faces when proposing marriage",
+      "A person's pattern of romantic attraction",
+      "A type of compass used for finding romantic restaurants"
+    ],
+    correctAnswer: 2,
+    explanation: "Romantic orientation refers to a person's pattern of romantic attraction, which may differ from their sexual orientation. For example, a person might be sexually attracted to multiple genders but only romantically attracted to one."
+  },
+  {
+    term: "Sex assigned at birth",
+    options: [
+      "The time of day someone was born",
+      "The biological sex category (typically male or female) assigned to a person at birth",
+      "A person's astrological sign",
+      "The hospital where someone was born"
+    ],
+    correctAnswer: 1,
+    explanation: "Sex assigned at birth refers to the biological sex category (typically male or female) assigned to a person at birth, usually based on their external anatomy. This may or may not align with a person's gender identity."
+  },
+  {
+    term: "Skoliosexual",
+    options: [
+      "Attraction to school buildings",
+      "A person who is only attracted to scholars",
+      "Attraction to non-binary and transgender people",
+      "A medical condition affecting the spine"
+    ],
+    correctAnswer: 2,
+    explanation: "Skoliosexual refers to individuals who are attracted to non-binary and transgender people. This term emphasizes attraction to genders outside the traditional male/female binary."
+  },
+  {
+    term: "Stonewall",
+    options: [
+      "A type of military defense",
+      "A protective wall made of stones",
+      "A pivotal moment in LGBTQIA+ history",
+      "A technique in debate to avoid answering questions"
+    ],
+    correctAnswer: 2,
+    explanation: "In LGBTQIA+ history, Stonewall refers to the 1969 Stonewall riots, a series of spontaneous demonstrations by members of the LGBTQIA+ community in response to a police raid at the Stonewall Inn in New York City. This event is considered a catalyst for the modern LGBTQIA+ rights movement."
+  },
+  {
+    term: "Top surgery",
+    options: [
+      "A type of brain surgery",
+      "Cosmetic surgery for the face",
+      "Gender-affirming surgery to alter chest appearance",
+      "The most difficult surgery in medical school"
+    ],
+    correctAnswer: 2,
+    explanation: "Top surgery refers to gender-affirming surgery to alter chest appearance, often undergone by transgender and non-binary individuals. For transmasculine individuals, this typically involves removal of breast tissue, while for transfeminine individuals, it may involve breast augmentation."
+  },
+  {
+    term: "Transgender",
+    options: [
+      "A person who enjoys transcendental meditation",
+      "Someone who frequently uses public transportation",
+      "A person whose gender identity differs from the sex they were assigned at birth",
+      "A type of electrical transformer"
+    ],
+    correctAnswer: 2,
+    explanation: "Transgender describes a person whose gender identity differs from the sex they were assigned at birth. This term encompasses a wide range of identities and experiences."
+  },
+  {
+    term: "Transition",
+    options: [
+      "The process of changing from one state to another",
+      "A musical technique of changing keys",
+      "The process of aligning one's gender expression with their gender identity",
+      "A type of economic change"
+    ],
+    correctAnswer: 2,
+    explanation: "In LGBTQIA+ contexts, transition refers to the process of aligning one's gender expression with their gender identity. This can involve social, legal, and/or medical changes, and is a highly individual process."
+  },
+  {
+    term: "Transphobia",
+    options: [
+      "Fear of public transportation",
+      "Prejudice against people who like to transform things",
+      "Prejudice, fear, or hatred directed toward transgender people",
+      "A medical condition causing fear of change"
+    ],
+    correctAnswer: 2,
+    explanation: "Transphobia refers to prejudice, fear, or hatred directed toward transgender people. This can manifest in various forms, from personal attitudes to systemic discrimination and violence."
+  },
+  {
+    term: "Ze/Zir",
+    options: [
+      "A type of alien species in science fiction",
+      "Gender-neutral pronouns used as an alternative to 'he/him' or 'she/her'",
+      "A brand of gender-neutral clothing",
+      "A new elements on the periodic table"
+    ],
+    correctAnswer: 1,
+    explanation: "Ze/Zir are gender-neutral pronouns that some people use as an alternative to 'he/him' or 'she/her.' These are examples of neopronouns, which are increasingly used by non-binary individuals who feel traditional pronouns don't accurately represent their gender identity."
+  }
+  // Add more questions here...
+];

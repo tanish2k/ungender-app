@@ -1,0 +1,252 @@
+import React, { useState } from 'react';
+
+interface CategoryConfig {
+  color: string;
+  borderColor: string;
+  title: string;
+  emoji: string;
+}
+
+interface CategoryConfigs {
+  [key: string]: CategoryConfig;
+}
+
+const categoryConfig: CategoryConfigs = {
+  transgender: { color: 'bg-purple-600', borderColor: 'border-purple-800', title: 'Trans & Non-Binary Rights', emoji: '⚧️' },
+  posh: { color: 'bg-pink-600', borderColor: 'border-pink-800', title: 'Sexual Harassment Prevention', emoji: '🛡️' },
+  pwd: { color: 'bg-green-600', borderColor: 'border-green-800', title: 'Disability Inclusion', emoji: '♿' },
+  maternity: { color: 'bg-orange-600', borderColor: 'border-orange-800', title: 'Parental & Caregiver Support', emoji: '👶' },
+  general: { color: 'bg-blue-600', borderColor: 'border-blue-800', title: 'Inclusive Workplace', emoji: 'ℹ️' }
+};
+
+const questions: { [key: string]: string[] } = {
+  transgender: [
+    "How can we create a safe and affirming environment for transgender and non-binary employees?",
+    "What steps can be taken to support an employee's gender transition in the workplace?",
+    "How can we ensure our policies and practices are inclusive of all gender identities?"
+  ],
+  posh: [
+    "What constitutes sexual harassment, and how can we create a culture of respect?",
+    "How can employees safely report incidents of harassment or discrimination?",
+    "What proactive measures can we implement to prevent sexual harassment?"
+  ],
+  pwd: [
+    "How can we make our workplace more accessible and inclusive for employees with disabilities?",
+    "What reasonable accommodations should we consider for employees with various disabilities?",
+    "How can we promote equal opportunities and career growth for employees with disabilities?"
+  ],
+  maternity: [
+    "How can we support employees of all genders in balancing work and family responsibilities?",
+    "What inclusive parental leave policies can we implement?",
+    "How can we create a family-friendly workplace that supports diverse family structures?"
+  ],
+  general: [
+    "How can we foster a workplace culture that celebrates diversity and promotes inclusion?",
+    "What strategies can we employ to address unconscious bias in hiring and promotion processes?",
+    "How can we ensure equal opportunities and fair treatment for employees of all backgrounds?"
+  ]
+};
+
+interface CueCardProps {
+  question: string;
+  category: string;
+  isRotating: boolean;
+}
+
+const CueCard: React.FC<CueCardProps> = ({ question, category, isRotating }) => {
+  const { color, borderColor, title, emoji } = categoryConfig[category];
+
+  return (
+    <div className={`w-full max-w-sm h-64 ${color} ${borderColor} border-4 rounded-lg overflow-hidden flex flex-col shadow-lg transition-transform duration-500 ${isRotating ? 'rotate-y-180' : ''}`}>
+      <div className="bg-white p-4 flex-grow flex flex-col">
+        <div className={`text-center ${color.replace('bg-', 'text-')} font-bold text-sm mb-2`}>{title}</div>
+        <div className="text-center text-4xl mb-4">{emoji}</div>
+        <div className="flex-grow flex items-center justify-center px-2">
+          <p className="text-black text-base font-medium text-center leading-tight">{question}</p>
+        </div>
+      </div>
+      <div className={`${color} p-2 text-white flex justify-center items-center`}>
+        <span className="font-bold text-lg cursor-pointer">DISCUSS</span>
+      </div>
+    </div>
+  );
+};
+
+const Header: React.FC = () => (
+  <header className="bg-white shadow-md p-4">
+    <div className="container mx-auto flex justify-center">
+      <img src="/ungender-logo.png" alt="Ungender Logo" className="h-12" />
+    </div>
+  </header>
+);
+
+const Footer: React.FC = () => (
+  <footer className="bg-gray-200 p-4 fixed bottom-0 left-0 right-0">
+    <div className="container mx-auto text-center">
+      Made with 🌈 by the Ungender team
+    </div>
+  </footer>
+);
+
+const UngenderApp: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<'landing' | 'report' | 'rights' | 'vocabulary' | 'topic'>('landing');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [currentQuestion, setCurrentQuestion] = useState<string | null>(null);
+  const [isRotating, setIsRotating] = useState<boolean>(false);
+  const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  const [dialogContent, setDialogContent] = useState<string>('');
+
+  const selectCategory = (category: string) => {
+    setSelectedCategory(category);
+    shuffleQuestion(category);
+    setCurrentPage('topic');
+  };
+
+  const shuffleQuestion = (category: string) => {
+    setIsRotating(true);
+    setTimeout(() => {
+      const categoryQuestions = questions[category];
+      const randomIndex = Math.floor(Math.random() * categoryQuestions.length);
+      setCurrentQuestion(categoryQuestions[randomIndex]);
+      setIsRotating(false);
+    }, 250);
+  };
+
+  const handleDiscuss = async () => {
+    setIsDialogOpen(true);
+    setDialogContent('Loading...');
+    // Simulating API call
+    setTimeout(() => {
+      setDialogContent('For 1-to-1 consult, visit the Ungender Safety booth. Follow the red flag and we are happy to help you.');
+    }, 1000);
+  };
+
+  const renderLandingPage = () => (
+    <div className="flex flex-col items-center space-y-4">
+      <p className="text-center mb-1">You are <span className="text-green-500">valid</span>. You are <span className="text-green-500">loved</span>.</p>
+      <p className="text-center mb-1">You <span className="text-black-500 font-bold">belong at Maya Bazaar</span>.</p>
+      <button
+        className="w-full max-w-sm text-lg bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded flex items-center justify-center"
+        onClick={() => setCurrentPage('report')}
+      >
+        <span className="mr-2">🆘</span> Seek Support
+      </button>
+      <button
+        className="w-full max-w-sm text-lg bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center justify-center"
+        onClick={() => setCurrentPage('rights')}
+      >
+        <span className="mr-2">📚</span> Know Your Rights
+      </button>
+      <button
+        className="w-full max-w-sm text-lg bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded flex items-center justify-center"
+        onClick={() => setCurrentPage('vocabulary')}
+      >
+        <span className="mr-2">🗣️</span> Learn Inclusive Language
+      </button>
+    </div>
+  );
+
+  const renderReportPage = () => (
+    <div className="flex flex-col items-center space-y-4">
+      <h1 className="text-2xl font-bold mb-4">Seek Support</h1>
+      <p className="text-lg mb-2">If you're experiencing any form of harassment or discrimination, we're here for you.</p>
+      <p className="text-lg mb-2">Call our confidential support line: <strong>9582630056</strong></p>
+      <p className="text-lg">Visit our Safe Space booth, where our compassionate team is ready to listen and support you.</p>
+      <button
+        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        onClick={() => setCurrentPage('landing')}
+      >
+        Back to Home
+      </button>
+    </div>
+  );
+
+  const renderRightsPage = () => (
+    <div className="flex flex-col items-center space-y-4">
+      <h1 className="text-2xl font-bold mb-4">Know Your Rights at Work</h1>
+      <p className="text-center mb-4">Everyone deserves a safe, respectful, and inclusive workplace. Choose a topic to learn more:</p>
+      {Object.entries(categoryConfig).map(([key, { title, emoji }]) => (
+        <button
+          key={key}
+          className="w-full max-w-sm text-lg bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded flex items-center justify-center"
+          onClick={() => selectCategory(key)}
+        >
+          <span className="mr-2">{emoji}</span> {title}
+        </button>
+      ))}
+      <button
+        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        onClick={() => setCurrentPage('landing')}
+      >
+        Back to Home
+      </button>
+    </div>
+  );
+
+  const renderVocabularyPage = () => (
+    <div className="flex flex-col items-center space-y-4">
+      <h1 className="text-2xl font-bold mb-4">Learn Inclusive Language</h1>
+      <p className="text-lg text-center">We're working on a comprehensive guide to help everyone communicate more inclusively. Check back soon for our vocabulary resources!</p>
+      <button
+        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        onClick={() => setCurrentPage('landing')}
+      >
+        Back to Home
+      </button>
+    </div>
+  );
+
+  const renderTopicPage = () => (
+    <div className="flex flex-col items-center space-y-4">
+      <h1 className="text-2xl font-bold mb-4">{categoryConfig[selectedCategory!].title}</h1>
+      {currentQuestion && (
+        <CueCard question={currentQuestion} category={selectedCategory!} isRotating={isRotating} />
+      )}
+      <div className="flex space-x-4">
+        <button onClick={() => shuffleQuestion(selectedCategory!)} className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+          New Question
+        </button>
+        <button onClick={handleDiscuss} className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
+          Discuss
+        </button>
+      </div>
+      <button
+        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        onClick={() => {
+          setCurrentPage('rights');
+          setSelectedCategory(null);
+          setCurrentQuestion(null);
+        }}
+      >
+        Back to Topics
+      </button>
+    </div>
+  );
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow container mx-auto p-4">
+        {currentPage === 'landing' && renderLandingPage()}
+        {currentPage === 'report' && renderReportPage()}
+        {currentPage === 'rights' && renderRightsPage()}
+        {currentPage === 'vocabulary' && renderVocabularyPage()}
+        {currentPage === 'topic' && renderTopicPage()}
+        {isDialogOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+            <div className="bg-white p-4 rounded-lg max-w-md">
+              <h2 className="text-xl font-bold mb-2">Inclusive Guidance</h2>
+              <p>{dialogContent}</p>
+              <button onClick={() => setIsDialogOpen(false)} className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default UngenderApp;
